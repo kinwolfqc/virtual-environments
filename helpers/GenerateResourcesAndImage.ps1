@@ -105,11 +105,6 @@ Function GenerateResourcesAndImage {
         [Switch] $Force
     )
 
-    if (([string]::IsNullOrEmpty($GithubFeedToken)))
-    {
-        Write-Error "'-GithubFeedToken' parameter is not specified. You have to specify valid GitHub PAT to download tool packages from GitHub Package Registry"
-        exit 1
-    }
 
     $builderScriptPath = Get-PackerTemplatePath -RepositoryRoot $ImageGenerationRepositoryRoot -ImageType $ImageType
     $ServicePrincipalClientSecret = $env:UserName + [System.GUID]::NewGuid().ToString().ToUpper();
